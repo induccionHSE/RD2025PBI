@@ -166,7 +166,103 @@
         /* Firmas */
         .signature-box { margin-top: 40px; display: flex; justify-content: center; gap: 60px; }
         .sign-line { border-top: 1px solid #334155; width: 220px; padding-top: 10px; text-align: center; font-size: 12px; font-weight: bold; }
+/* =========================================
+       DISEÑO RESPONSIVO (MÓVIL)
+       ========================================= */
+    @media (max-width: 768px) {
+        
+        /* 1. Cambiar la estructura principal de lado a lado -> vertical */
+        body {
+            flex-direction: column;
+            height: auto; /* Permitir scroll normal */
+            overflow-y: auto;
+        }
 
+        /* 2. Ajustar la barra lateral para que sea un encabezado superior */
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Hacer el menú navegable horizontalmente con el dedo */
+        .nav-menu {
+            display: flex;
+            overflow-x: auto; /* Scroll horizontal */
+            padding: 10px;
+            white-space: nowrap; /* Que los ítems no se partan */
+            -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
+        }
+
+        .nav-item {
+            padding: 10px 15px;
+            border-left: none;
+            border-bottom: 3px solid transparent; /* Indicador abajo en vez de al lado */
+            font-size: 12px;
+        }
+
+        .nav-item.active {
+            background: rgba(0,0,0,0.2);
+            border-left-color: transparent;
+            border-bottom-color: var(--accent);
+        }
+
+        /* Ocultar info del footer del sidebar para ahorrar espacio */
+        .footer-info { display: none; }
+        .logo-area { padding: 15px; }
+        .logo-img { max-width: 120px; }
+
+        /* 3. Ajustar el contenedor principal */
+        .main {
+            padding: 15px; /* Menos relleno a los lados */
+            width: 100%;
+            overflow: visible;
+        }
+
+        /* Encabezado del documento */
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .doc-title h1 { font-size: 28px; } /* Título más pequeño */
+
+        /* 4. ROMPER EL GRID: Que todo ocupe el 100% del ancho */
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        /* Forzar a cualquier columna (col-3, col-6, etc.) a ser ancho completo */
+        [class*="col-"] {
+            width: 100%;
+            grid-column: span 12 !important;
+        }
+
+        /* 5. Manejo de TABLAS en celular (Crucial) */
+        .card {
+            padding: 15px;
+            overflow-x: auto; /* Permite deslizar la tabla si no cabe */
+        }
+        
+        .data-table {
+            min-width: 600px; /* Fuerza un ancho mínimo para que la tabla no se aplaste */
+        }
+
+        /* 6. Ajustar las firmas */
+        .signature-box {
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        /* Ajustar gráficas */
+        canvas {
+            max-height: 200px;
+        }
+    }
     </style>
 </head>
 <body>
