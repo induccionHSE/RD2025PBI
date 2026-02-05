@@ -505,11 +505,33 @@
     </div>
 </div>
                 <div class="card col-6">
-                    <div class="card-title">3.3 GESTIÓN DE RIESGOS</div>
-                    <p style="font-size:13px; line-height:1.6;">
-                        <strong>Eficacia de Controles:</strong> Los controles implementados funcionaron eficazmente durante el periodo. No se materializaron riesgos corporativos críticos (soborno, paro armado o fallas tecnológicas masivas).<br><br>
-                        <strong>Gestión 2026:</strong> Se mantendrá el enfoque preventivo, especialmente en la protección contra ciberataques y la gestión de la conflictividad social.
-                    </p>
+                    <div class="card-title">3.3 GESTIÓN DE RIESGOS Y OPORTUNIDADES</div>
+                    
+                    <div class="grid-container">
+                        <div class="col-5" style="position: relative; height: 160px;">
+                            <canvas id="chartRiesgos"></canvas>
+                        </div>
+
+                        <div class="col-7">
+                            <h4 style="font-size:12px; color:#1e293b; margin-bottom:5px;">
+                                <i class="fa-solid fa-shield-halved" style="color:var(--success)"></i> EFICACIA DE CONTROLES
+                            </h4>
+                            <p style="font-size:11px; color:#334155; line-height:1.4;">
+                                Se gestionaron <strong>78 riesgos</strong> en 10 procesos corporativos.
+                                <br><br>
+                                <strong>Estado:</strong> Los controles para los <strong>4 Riesgos Extremos</strong> (Social, HSEQ y Cadena de Suministro) fueron eficaces. No se materializaron eventos catastróficos ni paradas no programadas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:10px; padding-top:10px; border-top:1px solid #e2e8f0;">
+                        <h4 style="font-size:12px; color:#1e293b; margin-bottom:5px;">
+                            <i class="fa-solid fa-chart-line" style="color:var(--secondary)"></i> OPORTUNIDADES
+                        </h4>
+                        <p style="font-size:11px; color:#334155;">
+                            Se capitalizó la <strong>Transformación Digital en el proceso HSEQ</strong> (Implementación AppScript para control en campo) y la <strong>Gestión Social Preventiva</strong>.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="card col-6">
@@ -1618,6 +1640,27 @@
                 });
             }
         };
+        // --- GRÁFICA DE RIESGOS (CONSOLIDADO TOTAL 78 RIESGOS) ---
+            const ctxRiesgos = document.getElementById('chartRiesgos');
+            if (ctxRiesgos) {
+                new Chart(ctxRiesgos.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Bajo (35)', 'Moderado (23)', 'Alto (16)', 'Extremo (4)'],
+                        datasets: [{
+                            data: [35, 23, 16, 4],
+                            backgroundColor: ['#10b981', '#f59e0b', '#f97316', '#ef4444'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'right', labels: { boxWidth: 10, font: { size: 9 } } }
+                        }
+                    }
+                });
+            }
     </script>
 </body>
 </html>
